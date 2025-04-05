@@ -1,68 +1,95 @@
-CB Data Export Automation
-This Python script automates the extraction, transformation, and export of CB (Credit Bureau) data from a SQL Server database, generates specific output files with formatted headers/footers, and renames the final outputs with a .cdf extension. It supports multiple credit bureau formats such as Highmark, CIBIL, and Equifax.
 
-📁 Project Structure
-arduino
+# 📊 CB Data Export Automation
+
+This Python script automates the extraction, transformation, and export of CB (Credit Bureau) data from a SQL Server database.  
+It generates specific output files with formatted headers/footers and renames the final outputs with a `.cdf` extension.  
+Supports multiple credit bureau formats such as **Highmark**, **CIBIL**, and **Equifax**.
+
+---
+
+## 📁 Project Structure
+
+```
 CB-Data-Export-Automation/
-    original_file/
-        CB_original_{end_date}.csv
-    Highmark_Files/
-        Highmark_{end_date}.cdf
-    Cibil_Files/
-        Cibil_{end_date}.cdf
-    Equifax_Files/
-        Equifax_{end_date}.cdf
-    date_config.txt       # Contains:startdate=01-Jan-25 & enddate=31-Jan-25
-    cb_data_export.py     # Main script
+├── original_file/
+│   └── CB_original_{end_date}.csv
+├── Highmark_Files/
+│   └── Highmark_{end_date}.cdf
+├── Cibil_Files/
+│   └── Cibil_{end_date}.cdf
+├── Equifax_Files/
+│   └── Equifax_{end_date}.cdf
+├── date_config.txt          # Contains:
+│   ├── startdate=01-Jan-25
+│   └── enddate=31-Jan-25
+└── cb_data_export.py        # Main script
+```
 
+---
 
+## ⚙️ Features
 
-⚙️ Features
-Connects to a SQL Server using pyodbc.
+- Connects to a SQL Server using `pyodbc`
+- Executes a stored procedure: `udp_CBDataSubmissionAll` with `start_date` and `end_date`
+- Exports data to CSV with pipe delimiter (`|`)
+- Adds custom headers and footers based on the credit bureau format
+- Renames `.csv` files to `.cdf`
+- Automatically reads dates from an external config file
 
-Executes a stored procedure udp_CBDataSubmissionAll with start_date and end_date.
+---
 
-Exports data to CSV with pipe-delimiter |.
+## 🧰 Requirements
 
-Adds custom headers and footers based on the credit bureau format.
+- Python 3.x  
+- Python modules:
+  - `pandas`
+  - `pyodbc`
 
-Renames .csv files to .cdf.
+### Install Dependencies:
 
-Automatically reads dates from an external config file.
+```bash
+pip install pandas pyodbc
+```
 
+---
 
-🧰 Requirements
-Python 3.x
+## 🛠️ Usage
 
-Modules: 
-  pandas
-  pyodbc
+### Step 1: Update `date_config.txt`
 
-Install dependencies:
-  pip install pandas pyodbc
-
-🛠️ Usage
-Update date_config.txt
-
-
+```
 startdate=01-Jan-25
 enddate=31-Jan-25
-Run the Script
+```
 
+### Step 2: Run the Script
 
+```bash
 python cb_data_export.py
-Output
+```
 
-Original data saved in: original_file/CB_original_{end_date}.csv
+---
 
-Final output files (Highmark, Cibil, Equifax) are saved with .cdf extensions in their respective folders.
+## 📤 Output
 
-📌 Notes
-Make sure the folder structure exists (original_file, Highmark_Files, etc.)
+- Original data saved in:  
+  `original_file/CB_original_{end_date}.csv`
 
-Edit SQL credentials before deployment (never commit sensitive info to public repositories).
+- Final output files with `.cdf` extension:
+  - `Highmark_Files/Highmark_{end_date}.cdf`
+  - `Cibil_Files/Cibil_{end_date}.cdf`
+  - `Equifax_Files/Equifax_{end_date}.cdf`
 
-Header/footer strings are hardcoded for specific bureau formats and should be updated if the format changes.
+---
 
-🧑‍💻 Author
-Developed by PRATHAMESH SURVE.
+## 📌 Notes
+
+- Ensure the folder structure exists before running the script
+- Edit SQL credentials before deployment — **do not commit credentials to GitHub**
+- Header/footer strings are hardcoded for specific bureau formats — update if required
+
+---
+
+## 👨‍💻 Author
+
+Developed by **Prathamesh Surve**
