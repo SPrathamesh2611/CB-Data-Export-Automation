@@ -85,7 +85,7 @@ python cb_data_export.py
 ## 📌 Notes
 
 - Ensure the folder structure exists before running the script
-- Edit SQL credentials before deployment — **do not commit credentials to GitHub**
+- Edit SQL credentials before deployment — 
 - Header/footer strings are hardcoded for specific bureau formats — update if required
 
 ---
