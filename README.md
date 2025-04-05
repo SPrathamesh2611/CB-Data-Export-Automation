@@ -3,26 +3,20 @@ This Python script automates the extraction, transformation, and export of CB (C
 
 📁 Project Structure
 arduino
-Copy
-Edit
-final cb project/
-│
-├── original_file/
-│   └── CB_original_{end_date}.csv
-│
-├── Highmark_Files/
-│   └── Highmark_{end_date}.cdf
-│
-├── Cibil_Files/
-│   └── Cibil_{end_date}.cdf
-│
-├── Equifax_Files/
-│   └── Equifax_{end_date}.cdf
-│
-├── date_config.txt         ← Contains start and end date in format:
-│                              startdate=01-Jan-25
-│                              enddate=31-Jan-25
-└── cb_data_export.py       ← Main Python script (this file)
+CB-Data-Export-Automation/
+    original_file/
+        CB_original_{end_date}.csv
+    Highmark_Files/
+        Highmark_{end_date}.cdf
+    Cibil_Files/
+        Cibil_{end_date}.cdf
+    Equifax_Files/
+        Equifax_{end_date}.cdf
+    date_config.txt       # Contains:startdate=01-Jan-25 & enddate=31-Jan-25
+    cb_data_export.py     # Main script
+
+
+
 ⚙️ Features
 Connects to a SQL Server using pyodbc.
 
@@ -36,34 +30,26 @@ Renames .csv files to .cdf.
 
 Automatically reads dates from an external config file.
 
+
 🧰 Requirements
 Python 3.x
 
-Modules:
-
-pandas
-
-pyodbc
+Modules: 
+  pandas
+  pyodbc
 
 Install dependencies:
+  pip install pandas pyodbc
 
-bash
-Copy
-Edit
-pip install pandas pyodbc
 🛠️ Usage
 Update date_config.txt
 
-txt
-Copy
-Edit
+
 startdate=01-Jan-25
 enddate=31-Jan-25
 Run the Script
 
-bash
-Copy
-Edit
+
 python cb_data_export.py
 Output
 
